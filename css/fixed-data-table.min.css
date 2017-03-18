@@ -1386,8 +1386,19 @@ body[dir="rtl"] .fixedDataTableColumnResizerLineLayout_main {
 .department {
   display: block;
   font-size: 10px;
-  /*text-align: center;*/
+  text-align: right;
 }
+
+.vote {
+  /*text-align: -webkit-right;
+  text-align: right;*/
+}
+
+.fixedDataTableCellLayout_alignCenter.public_fixedDataTableCell_main {
+  text-align: right;
+  text-align: -webkit-right;
+}
+
 
 .nominee {
   font-weight: 400;

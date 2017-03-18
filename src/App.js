@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table, Column, Cell} from 'fixed-data-table';
-import source from './data/source.json';
+import source from '../data/source.json';
 
 class MyTextCell extends React.Component {
   render() {
@@ -8,6 +8,17 @@ class MyTextCell extends React.Component {
     return (
       <Cell {...props}>
         {data[rowIndex][field]}
+      </Cell>
+    );
+  }
+}
+
+class MyVoteCell extends React.Component {
+  render() {
+    const {rowIndex, field, data, props} = this.props;
+    return (
+      <Cell {...props} className="vote">
+          {data[rowIndex][field]}
       </Cell>
     );
   }
@@ -64,7 +75,7 @@ class App extends React.Component {
           rowsCount={myTableData.length}
           rowHeight={35}
           headerHeight={60}
-          width={1000}
+          width={960}
           height={500}
           {...this.props}>
           <Column
@@ -88,7 +99,7 @@ class App extends React.Component {
               />
             }
             fixed={true}
-            width={100}
+            width={80}
           />
           <Column
             header={<Cell>State</Cell>}
@@ -99,7 +110,7 @@ class App extends React.Component {
               />
             }
             fixed={true}
-            width={100}
+            width={80}
           />
           {keys.slice(3).map(key =>
             <Column
@@ -114,7 +125,7 @@ class App extends React.Component {
                         </span>
                       </Cell>}
               cell={
-                <MyTextCell
+                <MyVoteCell
                   data={myTableData}
                   field={key}
                 />

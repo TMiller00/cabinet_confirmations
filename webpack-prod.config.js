@@ -1,14 +1,8 @@
-// webpack --config webpack-production.config.js -p
-
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: '/',
+    path: './',
     filename: 'index.js'
-  },
-  devServer: {
-    inline: true,
-    port: 3333
   },
   module: {
     loaders: [
