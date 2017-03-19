@@ -1,28 +1,7 @@
 import React from 'react';
 import {Table, Column, Cell} from 'fixed-data-table';
+import MyTextCell from './MyTextCell';
 import source from '../data/source.json';
-
-class MyTextCell extends React.Component {
-  render() {
-    const {rowIndex, field, data, props} = this.props;
-    return (
-      <Cell {...props}>
-        {data[rowIndex][field]}
-      </Cell>
-    );
-  }
-}
-
-class MyVoteCell extends React.Component {
-  render() {
-    const {rowIndex, field, data, props} = this.props;
-    return (
-      <Cell {...props} className="vote">
-          {data[rowIndex][field]}
-      </Cell>
-    );
-  }
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -60,7 +39,7 @@ class App extends React.Component {
   render() {
     var myTableData = this.state.myTableData;
     var keys = Object.keys(myTableData[0]);
-    var alignEnum = { left: 'left', center: "center", right: 'right'};
+    var alignEnum = { left: 'left', center: 'center', right: 'right'};
 
     return (
       <div>
@@ -114,8 +93,7 @@ class App extends React.Component {
           />
           {keys.slice(3).map(key =>
             <Column
-              key = {key}
-              align={alignEnum.center}
+              key={key}
               header={<Cell>
                         <span className="nominee">
                           {key.split('—')[1]}
@@ -125,11 +103,12 @@ class App extends React.Component {
                         </span>
                       </Cell>}
               cell={
-                <MyVoteCell
+                <MyTextCell
                   data={myTableData}
                   field={key}
                 />
               }
+              align={alignEnum.right}
               flexGrow={3}
               width={135}
             />
